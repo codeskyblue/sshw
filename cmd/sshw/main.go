@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/codeskyblue/sshw"
 	"github.com/manifoldco/promptui"
-	"github.com/yinheli/sshw"
 )
 
 const prev = "-parent-"
@@ -95,7 +95,7 @@ func main() {
 
 func choose(parent, trees []*sshw.Node) *sshw.Node {
 	prompt := promptui.Select{
-		Label:        "select host",
+		Label:        "Select host",
 		Items:        trees,
 		Templates:    templates,
 		Size:         20,

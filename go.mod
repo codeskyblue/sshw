@@ -1,4 +1,4 @@
-module github.com/yinheli/sshw
+module github.com/codeskyblue/sshw
 
 go 1.18
 

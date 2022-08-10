@@ -1,6 +1,4 @@
-# sshw
-
-[![Build Status](https://travis-ci.org/yinheli/sshw.svg?branch=master)](https://travis-ci.org/yinheli/sshw)
+# sshw (Fork version by codeskyblue)
 
 ssh client wrapper for automatic login.
 
@@ -11,10 +9,10 @@ ssh client wrapper for automatic login.
 use `go get`
 
 ```
-go get -u github.com/yinheli/sshw/cmd/sshw
+go get -u github.com/codeskyblue/sshw/cmd/sshw
 ```
 
-or download binary from [releases](//github.com/yinheli/sshw/releases).
+or download binary from [releases](//github.com/codeskyblue/sshw/releases).
 
 ## config
 
