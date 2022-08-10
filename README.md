@@ -42,6 +42,9 @@ config example:
 
 # server group 1
 - name: server group 1
+  password: abc123 # set default password
+  port: 22 # set default port
+  # keypath, passphrase is also support
   children:
   - { name: server 1, user: root, host: 192.168.1.2 }
   - { name: server 2, user: root, host: 192.168.1.3 }

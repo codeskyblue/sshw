@@ -129,8 +129,28 @@ func choose(parent, trees []*sshw.Node) *sshw.Node {
 	if len(node.Children) > 0 {
 		first := node.Children[0]
 		if first.Name != prev {
+			// children首次加载
+			// node.Children[0].Password
+			for _, childNode := range node.Children {
+				if childNode.Port == 0 && node.Port != 0 {
+					childNode.Port = node.Port
+				}
+				if childNode.User == "" && node.User != "" {
+					childNode.User = node.User
+				}
+				if childNode.Password == "" && node.Password != "" {
+					childNode.Password = node.Password
+				}
+				if childNode.KeyPath == "" && node.KeyPath != "" {
+					childNode.KeyPath = node.KeyPath
+				}
+				if childNode.Passphrase == "" && node.Passphrase != "" {
+					childNode.Passphrase = node.Passphrase
+				}
+			}
 			first = &sshw.Node{Name: prev}
 			node.Children = append(node.Children[:0], append([]*sshw.Node{first}, node.Children...)...)
+
 		}
 		return choose(trees, node.Children)
 	}
