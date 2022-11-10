@@ -71,6 +71,15 @@ func GetConfig() []*Node {
 	return config
 }
 
+func fixKeyPath(rootNode []*Node) {
+	for _, node := range rootNode {
+		if node.Children != nil {
+			fixKeyPath(node.Children)
+		}
+		node.KeyPath, _ = homedir.Expand((node.KeyPath))
+	}
+}
+
 func LoadConfig() error {
 	b, err := LoadConfigBytes(".sshw", ".sshw.yml", ".sshw.yaml")
 	if err != nil {
@@ -82,6 +91,7 @@ func LoadConfig() error {
 		return err
 	}
 
+	fixKeyPath(c)
 	config = c
 
 	return nil
@@ -116,7 +126,6 @@ func LoadSshConfig() error {
 			keyPath, _ := cfg.Get(alias, "IdentityFile")
 			c.KeyPath, _ = homedir.Expand(keyPath)
 			nc = append(nc, c)
-			// fmt.Println(c.Alias, c.Host, c.User, c.Port, c.KeyPath)
 		}
 	}
 	config = nc
