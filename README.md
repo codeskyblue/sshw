@@ -4,6 +4,23 @@ ssh client wrapper for automatic login.
 
 ![usage](./assets/sshw-demo.gif)
 
+## New added feature
+- add keypath support homedir ~
+- support inherit parent configuration, see feature-1
+
+
+**feature-1**
+
+support
+
+```
+- name: 5L
+  user: kitty
+  children:
+    - name: host-can-be-ignored
+      host: 127.0.0.1
+```
+
 ## install
 
 use `go get`
